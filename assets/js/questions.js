@@ -5,7 +5,7 @@ var quizQuestions = [
             "booleans",
             "alerts",
             "numbers"],
-            correctAnswerIndex: 2
+            correctAnswer: "alerts"
     },
     {
         question: "The condition in an if/else statement is enclosed within ____.",
@@ -13,7 +13,7 @@ var quizQuestions = [
             "curly brackets",
             "parentheses",
             "square brackets"],
-            correctAnswerIndex: 2
+            correctAnswer: "parentheses"
     },
     {
         question: "Arrays in JavaScript can be used to store ____.",
@@ -21,7 +21,7 @@ var quizQuestions = [
             "other arrays",
             "booleans",
             "all of the above"],
-            correctAnswerIndex: 3
+            correctAnswer: "all of the above"
     },
     {
         question: "String values must be enclosed within ____ when being assigned to variables.",
@@ -29,7 +29,7 @@ var quizQuestions = [
             "curly brackets",
             "quotes",
             "parentheses"],
-            correctAnswerIndex: 2
+            correctAnswer: "quotes"
     },
     {
         question: "A very useful tool used during development and debugging for printing content to the debugger is:",
@@ -37,7 +37,7 @@ var quizQuestions = [
             "terminal/bash",
             "for loops",
             "console.log"],
-            correctAnswerIndex: 3
+            correctAnswer: "console.log"
     },
     {
         question: "Inside which HTML element do we put the JavaScript?",
@@ -45,15 +45,15 @@ var quizQuestions = [
             "<js>",
             "<script>",
             "<scripting>"],
-            correctAnswerIndex: 2
+            correctAnswer: "<script>"
     },
     {
         question: "How do you call a function named myFunction?",
         answers: ["call myFunction()",
-            "muFunction()",
+            "myFunction()",
             "call function myFunction",
             "Call.myFunction"],
-            correctAnswerIndex: 2
+            correctAnswer: "myFunction()"
     },
     {
         question: "How does a for loop start?",
@@ -61,6 +61,6 @@ var quizQuestions = [
             "for (i = 0; i <= 5)",
             "for i = 1 to 5",
             "for (i <= 5; i++)"],
-            correctAnswerIndex: 0
+            correctAnswer: "for (i = 0; i <= 5; i++)"
     },
 ]
