@@ -6,6 +6,7 @@ var timerEl = document.querySelector("#time");
 var questionsEl = document.querySelector("#questions");
 var choicesEl = document.querySelector("#choices");
 var feedbackEl = document.querySelector("#feedback");
+var endScreenEl = document.querySelector("#end-screen");
 
 // Timer variables
 
@@ -80,12 +81,18 @@ function userAnswer() {
   }, 3000);
   // Go to next question
   questionIndex++;
-  getQuestions();
+  if (questionIndex === quizQuestions.length) {
+    endQuiz();
+  } else {
+    getQuestions();
+  }
 }
-// check the index of the answer
-// compare that value to the correct answer
-// if (the thing the user answered is correct)
-//    display correct!
-// else
-//    display incorrect
-//    subtract time
+
+// End Quiz
+function endQuiz() {
+  clearInterval(timer);
+  // Show end screen
+  endScreenEl.removeAttribute("class");
+  // Hide questions 
+  questionsEl.setAttribute("class", "hide");
+}
