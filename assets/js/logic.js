@@ -10,7 +10,7 @@ var endScreenEl = document.querySelector("#end-screen");
 var finalScore = document.querySelector("#final-score");
 var initialsInput = document.querySelector("#initials");
 var submitButton = document.querySelector("#submit");
-var highScores = "highscores.html";
+var viewHighScores = "highscores.html";
 
 // Timer variables
 
@@ -106,24 +106,32 @@ function endQuiz() {
   finalScore.textContent = timerCount;
 }
 
-// Store user initials and score
+var highScoresArr = [];
+
+function storeHighScores() {
+  // Stringify and set "highScoresArr" key in localStorage to highScoresArr array
+  localStorage.setItem("highScoresArr", JSON.stringify(highScoresArr));
+}
+
+// When form is submitted...
 submitButton.addEventListener("click", function(event) {
   event.preventDefault();
-  window.location.href = highScores;
-  saveScore();
+  window.location.href = viewHighScores;
+
+  var userScore = {
+    initials: initialsInput.value.trim(),
+    score: timerCount,
+  }
+
+    if (userScore.initials === "") {
+      displayMessage("error", "Initials cannot be blank");
+    }
+
+  // Add new todoText to todos array
+  highScoresArr.push(userScore);
+
+  // Store updated todos in localStorage, re-render the list
+  storeHighScores();
+  renderHighScores();
 });
 
-function saveScore() {
-// Create user object
-var userScore = {
-  initials: initialsInput.value.trim(),
-  score: timerCount,
-};
-console.log(userScore);
-// Return from function early if blank
-if (userScore.initials === "") {
-  displayMessage("error", "Initials cannot be blank");
-}
-// Save to local storage
-localStorage.setItem("userScore", JSON.stringify(userScore));
-}
