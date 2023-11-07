@@ -7,6 +7,10 @@ var questionsEl = document.querySelector("#questions");
 var choicesEl = document.querySelector("#choices");
 var feedbackEl = document.querySelector("#feedback");
 var endScreenEl = document.querySelector("#end-screen");
+var finalScore = document.querySelector("#final-score");
+var initialsInput = document.querySelector("#initials");
+var submitButton = document.querySelector("#submit");
+var highScores = "highscores.html";
 
 // Timer variables
 
@@ -24,11 +28,14 @@ function startQuiz() {
 }
 startButton.addEventListener("click", startQuiz);
 
-// Start Timer
+// Set Timer
 function startTimer() {
   timer = setInterval(function () {
     timerCount--;
     timerEl.textContent = timerCount;
+    if (timerCount <= 0) {
+      endQuiz();
+    }
   }, 1000);
   console.log(timerCount);
 }
@@ -93,6 +100,30 @@ function endQuiz() {
   clearInterval(timer);
   // Show end screen
   endScreenEl.removeAttribute("class");
-  // Hide questions 
+  // Hide questions
   questionsEl.setAttribute("class", "hide");
+  // Show final score
+  finalScore.textContent = timerCount;
+}
+
+// Store user initials and score
+submitButton.addEventListener("click", function(event) {
+  event.preventDefault();
+  window.location.href = highScores;
+  saveScore();
+});
+
+function saveScore() {
+// Create user object
+var userScore = {
+  initials: initialsInput.value.trim(),
+  score: timerCount,
+};
+console.log(userScore);
+// Return from function early if blank
+if (userScore.initials === "") {
+  displayMessage("error", "Initials cannot be blank");
+}
+// Save to local storage
+localStorage.setItem("userScore", JSON.stringify(userScore));
 }
