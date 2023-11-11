@@ -1,4 +1,5 @@
 var highScoresList = document.querySelector("#highscores");
+var clearButton = document.querySelector("#clear");
 
 function renderHighScores() {    
     // Render a new li for each high score
@@ -23,5 +24,13 @@ function renderHighScores() {
       highScoresList.appendChild(li);
     }
   }
+
+// Clear scores
+function clearHighScores() {
+}
+clearButton.addEventListener("click", function() {
+  window.localStorage.removeItem("highScoresArr");
+  window.location.reload();
+});
 
   renderHighScores();

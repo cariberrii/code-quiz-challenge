@@ -117,16 +117,19 @@ function storeHighScores() {
 // When form is submitted...
 submitButton.addEventListener("click", function(event) {
   event.preventDefault();
-  window.location.href = viewHighScores;
+  
+  if (initialsInput.value.trim() == "") {
+    alert("Initials cannot be blank");
+  return false;
+  } else {
+    window.location.href = viewHighScores;
+  }
 
   var userScore = {
     initials: initialsInput.value.trim(),
     score: timerCount,
   }
 
-    if (userScore.initials === "") {
-      displayMessage("error", "Initials cannot be blank");
-    }
 
   // Add new score to scores array
   highScoresArr.push(userScore);
