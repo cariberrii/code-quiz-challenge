@@ -106,7 +106,8 @@ function endQuiz() {
   finalScore.textContent = timerCount;
 }
 
-var highScoresArr = [];
+// Save Scores
+var highScoresArr = JSON.parse(window.localStorage.getItem("highScoresArr")) || [];
 
 function storeHighScores() {
   // Stringify and set "highScoresArr" key in localStorage to highScoresArr array
@@ -127,7 +128,7 @@ submitButton.addEventListener("click", function(event) {
       displayMessage("error", "Initials cannot be blank");
     }
 
-  // Add new todoText to todos array
+  // Add new score to scores array
   highScoresArr.push(userScore);
 
   // Store updated todos in localStorage, re-render the list

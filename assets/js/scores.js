@@ -2,19 +2,22 @@ var highScoresList = document.querySelector("#highscores");
 
 function renderHighScores() {    
     // Render a new li for each high score
-    var storedHighScores = JSON.parse(localStorage.getItem("highScoresArr"));
+    var storedHighScores = JSON.parse(window.localStorage.getItem("highScoresArr")) || [];
+    storedHighScores.sort(function(a,b) {
+      return b.score - a.score;
+    });
     if (storedHighScores !== null) {
-        highScores = storedHighScores;
+        var highScores = storedHighScores;
     }
 
     console.log(storedHighScores);
     console.log(highScores);
 
     for (var i = 0; i < highScores.length; i++) {
-      var highScores = highScores[i];
+      var savedScore = highScores[i];
   
       var li = document.createElement("li");
-      li.textContent = highScores.initials + ": " + highScores.score;
+      li.textContent = savedScore.initials + ": " + savedScore.score;
       li.setAttribute("data-index", i);
   
       highScoresList.appendChild(li);
